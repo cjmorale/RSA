@@ -3,6 +3,7 @@ from RSA import *
 import pymysql
 from functools import wraps
 
+# app = ResponsiveFlask(__name__)
 app = Flask(__name__)
 # set the secret key.  keep this really secret:
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
@@ -146,4 +147,4 @@ def logout():
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host='0.0.0.0')
