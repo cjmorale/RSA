@@ -1,84 +1,113 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, session, redirect, url_for
 from RSA import *
-
 import pymysql
+from functools import wraps
 
 app = Flask(__name__)
+# set the secret key.  keep this really secret:
+app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 
-def validate_user(new_email,new_user,pw1,pw2):
+
+def login_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        print(session['username'])
+        if session['username'] is None:
+            return redirect(url_for('sign_in', next=request.url))
+        return f(*args, **kwargs)
+    return decorated_function
+
+
+def validate_user(new_email, new_user, pw1, pw2, new_name):
     hostname = 'rsadb.clm6gze49vii.us-west-2.rds.amazonaws.com'
-    port =33306
+    port = 33306
     username = 'cjmorale'
     password = 'Overland04'
     database = 'users'
 
-    myConnection = pymysql.connect( host=hostname, user=username, passwd=password, db=database, port=port )
+    myConnection = pymysql.connect(host=hostname, user=username,
+                                   passwd=password, db=database, port=port,
+                                   autocommit=True)
     cur = myConnection.cursor()
-    cur.execute( "SELECT Login, Email_Address from User_info;" )
+    cur.execute("SELECT Login, Email_Address, Name from User_info;")
     Data = cur.fetchall()
 
-    email = sum([int(new_email==Data[x][1]) for x in range(len(Data))])
-    name = sum([int(new_user==Data[x][0]) for x in range(len(Data))])
+    email = sum([int(new_email == Data[x][1]) for x in range(len(Data))])
+    user_name = sum([int(new_user == Data[x][0]) for x in range(len(Data))])
 
-    if(pw1!=pw2):
-        message ='Passwords do not match. Please Re-Enter Passwords'
+    if(pw1 != pw2):
+        message = 'Passwords do not match. Please Re-Enter Passwords'
         success = False
-    elif(email > 0 and name>0):
-        message ='Username and email address already in use. Choose another username and email address please.'
+    elif(email > 0 and user_name > 0):
+        message = 'Username and email address already in use.' \
+                  'Choose another username and email address please.'
         success = False
-    elif(name > 0):
-        message ='Username already in use. Choose another username please.'
+    elif(user_name > 0):
+        message = 'Username already in use. Choose another username please.'
         success = False
     elif(email > 0):
-        message ='Email address already in use. Choose another email address please.'
+        message = 'Email address already in use.'\
+                  'Choose another email address please.'
         success = False
     else:
-        message ='Account Setup Successful. Check email for confirmation email'
+        temp = "INSERT INTO User_info (Name, Login, Email_Address, Password)"
+        temp2 = "VALUES ('"+str(new_user)+"','"+str(new_name)+"','" + \
+                str(new_email)+"','"+str(pw1)+"');"
+        cur.execute(temp+temp2)
+
+        message = 'Account Setup Successful. Confirmation email sent.'
         success = True
     print(message)
     myConnection.close()
-    return({'message':message, 'success':success})
+    return({'message': message, 'success': success})
 
-def validate_login(user,password):
+
+def validate_login(user, pwd):
     hostname = 'rsadb.clm6gze49vii.us-west-2.rds.amazonaws.com'
-    port =33306
+    port = 33306
     username = 'cjmorale'
     password = 'Overland04'
     database = 'users'
 
-    myConnection = pymysql.connect( host=hostname, user=username, passwd=password, db=database, port=port )
+    myConnection = pymysql.connect(host=hostname, user=username,
+                                   passwd=password, db=database,
+                                   port=port, autocommit=True)
     cur = myConnection.cursor()
-    cur.execute( "SELECT Login, Password from User_info;" )
+    cur.execute("SELECT Login, Password from User_info;")
     Data = cur.fetchall()
-
-    verify = [((user==Data[x][0]),(password==Data[x][1]) ) for x in range(len(Data))]
-
-    if( (True,True) in verify ):
-        message ='Username and email address are in database.'
+    for x in range(len(Data)):
+        print((Data[x][0], Data[x][1]))
+    verify = [((user == Data[x][0]), (pwd == Data[x][1]))
+              for x in range(len(Data))]
+    print(verify)
+    if((True, True) in verify):
+        message = 'Username and email address are in database.'
         success = True
     else:
-        message ='Username and email address are not in database.'
+        message = 'Username and email address are not in database.'
         success = False
     print(message)
     myConnection.close()
-    return({'message':message, 'success':success})
+    return({'message': message, 'success': success})
 
 
 @app.route("/")
 def main():
     return render_template('Home.html')
 
+
 @app.route("/sign_in", methods=['POST', 'GET'])
-def login():
+def sign_in():
     error = None
     if request.method == 'POST':
         valid = validate_login(request.form['inputUsername'],
-                              request.form['inputPassword'])
+                               request.form['inputPassword'])
         print(valid)
         if valid['success'] is True:
             data = {'username': request.form['inputUsername']}
             print(data)
             user = request.form['inputUsername']
+            session['username'] = user
             return render_template('TEMPLATE.html', name=user)
         else:
             return render_template('sign_in_fail.html')
@@ -88,12 +117,12 @@ def login():
 
 @app.route("/sign_up", methods=['POST', 'GET'])
 def setup():
-    error = None
     if request.method == 'POST':
         valid = validate_user(request.form['inputEmail'],
                               request.form['inputName'],
                               request.form['inputPassword1'],
-                              request.form['inputPassword2'])
+                              request.form['inputPassword2'],
+                              request.form['inputUsername'],)
         print(valid)
         if valid['success'] is True:
             return render_template('sign_up_success.html')
@@ -101,6 +130,20 @@ def setup():
             return render_template('sign_up_fail.html')
     else:
         return render_template('sign_up.html')
+
+
+@app.route("/user_profile", methods=['POST', 'GET'])
+@login_required
+def user_profile():
+        return render_template('user_profile.html')
+
+
+@app.route('/logout', methods=['POST', 'GET'])
+def logout():
+    # remove the username from the session if it's there
+    session.pop('username', None)
+    return redirect(url_for('sign_in'))
+
 
 if __name__ == "__main__":
     app.run()
