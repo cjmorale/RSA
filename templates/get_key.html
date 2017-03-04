@@ -65,7 +65,7 @@
                 <ul class="dropdown-menu dropdown-user">
                     <li><a href="/user_profile"><i class="fa fa-user fa-fw"></i> User Profile</a>
                     </li>
-                    <li><a href="/settings"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                    <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                     </li>
                     <li class="divider"></li>
                     <li><a href="/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
@@ -79,10 +79,10 @@
             <div class="sidebar-nav navbar-collapse">
                 <ul class="nav" id="side-menu">
                     <li>
-                        <a href="/home_page" class="active"><i class="fa fa-dashboard fa-fw"></i> Main Page </a>
-                        <a href="/get_key" class="active"><i class="fa fa-file fa-fw"></i> Get Key </a>
-                        <a href="/upload_key" class="active"><i class="fa fa-upload fa-fw"></i> Upload Key </a>
-                        <a href="/messages" class="active"><i class="fa fa-envelope fa-fw"></i>Messages</a>
+                      <a href="/home_page" class="active"><i class="fa fa-dashboard fa-fw"></i> Main Page </a>
+                      <a href="/get_key" class="active"><i class="fa fa-file fa-fw"></i> Get Key </a>
+                      <a href="/upload_key" class="active"><i class="fa fa-upload fa-fw"></i> Upload Key </a>
+                      <a href="/messages" class="active"><i class="fa fa-envelope fa-fw"></i>Messages</a>
                     </li>
                 </ul>
             </div>
@@ -98,7 +98,15 @@
                     <h3 class="page-header">Welcome</h3>
                 </div>
             </div>
-
+            <form class="form" method="post">
+              <label for="inputprime1" class="sr-only">Length of prime 1</label>
+              <input type="prime1" name="inputprime1" id="inputprime1" class="form-control" placeholder="prime1" required autofocus>
+              <label for="inputprime2" class="sr-only">Length of prime 2</label>
+              <input type="prime2" name="inputprime2" id="inputprime2" class="form-control" placeholder="prime2" required autofocus>
+              <label for="inputexp" class="sr-only">Length of exponent</label>
+              <input type="exp" name="inputexp" id="inputexp" class="form-control" placeholder="exp" required autofocus>
+              <button name="key_gen">Generate Key</button>
+            </form>
         </div>
     </div>
 

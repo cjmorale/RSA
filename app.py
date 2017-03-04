@@ -1,6 +1,7 @@
-from flask import Flask, render_template, request, session, redirect, url_for
+from flask import Flask, render_template, request, session, redirect, url_for, send_file
 from RSA import *
 import pymysql
+import json
 from functools import wraps
 
 # app = ResponsiveFlask(__name__)
@@ -109,7 +110,8 @@ def sign_in():
             print(data)
             user = request.form['inputUsername']
             session['username'] = user
-            return render_template('TEMPLATE.html', name=user)
+            return redirect(url_for('home_page'))
+            # return render_template('TEMPLATE.html', name=user)
         else:
             return render_template('sign_in_fail.html')
     else:
@@ -144,6 +146,43 @@ def logout():
     # remove the username from the session if it's there
     session.pop('username', None)
     return redirect(url_for('sign_in'))
+
+
+@app.route('/home_page', methods=['POST', 'GET'])
+def home_page():
+        return render_template('TEMPLATE.html')
+
+
+@app.route('/get_key', methods=['POST', 'GET'])
+def get_key():
+    rsa = RSA()
+    try:
+        print(request)
+        key = rsa.generate_key(request.form['inputprime1'],
+                               request.form['inputprime2'],
+                               request.form['inputexp'])
+        print(key)
+        json.dump(key, open("key.txt", 'w'))
+        print('Hello')
+        return(send_file("key.txt", as_attachment=True))
+        # return render_template('TEMPLATE.html')
+    except:
+        return render_template('get_key.html')
+
+
+@app.route('/upload_key', methods=['POST', 'GET'])
+def upload_key():
+        return render_template('upload_key.html')
+
+
+@app.route('/settings', methods=['POST', 'GET'])
+def settings():
+        return render_template('settings.html')
+
+
+@app.route('/messages', methods=['POST', 'GET'])
+def messages():
+        return render_template('messages.html')
 
 
 if __name__ == "__main__":

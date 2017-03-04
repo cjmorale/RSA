@@ -18,7 +18,7 @@ def egcd(a, b):
 def modinv(a, m):
     g, x, y = egcd(a, m)
     if g != 1:
-        raise Exception('+str(a)+' and '+str(m)+' are not coprime')
+        raise Exception(str(a)+' and '+str(m)+' are not coprime')
     else:
         return x % m
 
@@ -45,7 +45,7 @@ def factor_brute_force(N):
         div = N/float(i)
         if round(div)*i == N:
             print(str(i) + " is a factor of "+str(N))
-            return(str(N) + " is not a prime number.)
+            return(str(N) + " is not a prime number.")
             break
         else:
             if i == round(N**.5):
@@ -158,9 +158,9 @@ def remove_padding(block, pad_mod=311):
 class RSA():
 
     def generate_key(self, length_p, length_q, length_e):
-        p = produce_prime(length_p)
-        q = produce_prime(length_q)
-        e = produce_prime(length_e)
+        p = produce_prime(int(length_p))
+        q = produce_prime(int(length_q))
+        e = produce_prime(int(length_e))
 
         N = p*q
         d = modinv(e, (p-1)*(q-1))
