@@ -1,3 +1,3 @@
 # RSA
-Shiny app which performs kernel PCA
+Python code to perform RSA (Rivest–Shamir–Adleman) public-key cryptosystems.
 
