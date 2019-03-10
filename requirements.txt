@@ -1,0 +1,12 @@
+awscli
+matplotlib
+pycodestyle
+pydocstyle
+pytest
+pytest-cov
+pylint
+seaborn
+sphinx
+sphinxcontrib-napoleon
+sphinx_rtd_theme
+wheel
