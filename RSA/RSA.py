@@ -107,8 +107,8 @@ def produce_prime(length=500):
     the statement that a^p-1-1 is an integer multiple of p, or in symbols
     a^(p-1) equiv 1 mod p
     '''
-    a = 1**length
-    b = 9**length
+    a = 9**length
+    b = 10**length
     p = random.randint(a, b)
     finish = 0
     while finish == 0:
