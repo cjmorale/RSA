@@ -179,12 +179,12 @@ def remove_padding(block, pad_int=311):
 
 class RSA():
 
-    def __init__(self, len_p=None, len_q=None, len_e=None):
-        self.p = None
-        self.q = None
-        self.e = None
-        self.N = None
-        self.d = None
+    def __init__(self, len_p=None, len_q=None, len_e=None, p=None, q=None, e=None, N=None, d=None):
+        self.p = p
+        self.q = q
+        self.e = e
+        self.N = N
+        self.d = d
         self.len_p = len_p
         self.len_e = len_e
         self.len_q = len_q
