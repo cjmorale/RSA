@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 from RSA.encryption import *
 import json
 import werkzeug.datastructures
+import os
 
 app = Flask(__name__)
 
@@ -65,5 +66,6 @@ def main(request):
             response = app.make_response(rv)
             return app.process_response(response)
 
+
 if __name__ == "__main__":
-    app.run(debug=True, host = '0.0.0.0', port=8080)
+    app.run(debug=True, host='0.0.0.0', port=int(os.environ.get('PORT', 8080)))

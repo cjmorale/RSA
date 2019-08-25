@@ -5,7 +5,7 @@ Python code to perform RSA (Rivest–Shamir–Adleman) public-key cryptosystem.
 There is Flask app that performs the RSA encryption and decryption. To run the code locally use the folling command
 
 ```python
-python mian.py
+python main.py
 ```
 
 The code will be running at **0.0.0.0:8080**
@@ -15,6 +15,12 @@ Flask application is currently running on a google cloud function. Hence, all en
 
 ```python
 https://us-central1-upbeat-legacy-250621.cloudfunctions.net/rsa
+```
+
+# Google Cloud Run
+Flask application is also currently running on google cloud run. This service has a docker container hosting the app using **gunicorn**. The endpoint can be accessed here
+```json
+https://rsa-ebqmominqa-uc.a.run.app
 ```
 
 # Endpoints
