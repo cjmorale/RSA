@@ -28,14 +28,12 @@ def create_key():
 @app.route("/encrypt", methods = ['POST'])
 def encrypt():
     data = request.json
-    print(data)
 
-    messege = data['messege']
+    message = data['message']
+    e, N =  data['e'], data['N']
 
-    p, q, e, N, d =  data['p'], data['q'], data['e'], data['N'], data['d']
-
-    rsa = RSA(p=p, q=q, e=e, N=N, d=d)
-    encrypted = rsa.encrypt(messege)
+    rsa = RSA(e=e, N=N)
+    encrypted = rsa.encrypt(message)
 
     return jsonify(encrypted)
 
@@ -44,8 +42,8 @@ def encrypt():
 def decrypt():
     data = request.json
     encrypted = data['encrypted']
-    p, q, e, N, d = data['p'], data['q'], data['e'], data['N'], data['d']
-    rsa = RSA(p=p, q=q, e=e, N=N, d=d)
+    N, d =  data['N'], data['d']
+    rsa = RSA(N=N, d=d)
     decrypted = rsa.decrypt(encrypted)
 
     return jsonify(decrypted)
