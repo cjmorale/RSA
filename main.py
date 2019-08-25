@@ -27,6 +27,7 @@ def create_key():
 @app.route("/encrypt", methods = ['POST'])
 def encrypt():
     data = request.json
+    print(data)
 
     messege = data['messege']
 

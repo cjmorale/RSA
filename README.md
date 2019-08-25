@@ -10,6 +10,13 @@ python app.py
 
 The code will be running at **0.0.0.0:8080**
 
+# Google Cloud Function
+Flask application is currently running on a google cloud function. Hence, all endpoints can be accessed at the following url
+
+```python
+https://us-central1-upbeat-legacy-250621.cloudfunctions.net/rsa
+```
+
 # Endpoints
 ### /create_key
 
