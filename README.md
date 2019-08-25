@@ -1,11 +1,11 @@
 # RSA
-Python code to perform RSA (Rivest–Shamir–Adleman) public-key cryptosystems.
+Python code to perform RSA (Rivest–Shamir–Adleman) public-key cryptosystem.
 
 # Flask App
 There is Flask app that performs the RSA encryption and decryption. To run the code locally use the folling command
 
 ```python
-python app.py
+python mian.py
 ```
 
 The code will be running at **0.0.0.0:8080**
