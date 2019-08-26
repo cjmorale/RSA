@@ -2,7 +2,7 @@
 Python code to perform RSA (Rivest–Shamir–Adleman) public-key cryptosystem.
 
 # Flask App
-There is Flask app that performs the RSA encryption and decryption. To run the code locally use the folling command
+There is Flask app that performs the RSA encryption and decryption. To run the code locally use the following command
 
 ```python
 python main.py
