@@ -53,9 +53,8 @@ mapping = {'a': '99', 'b': '01', 'c': '02', 'd': '03', 'e': '04', 'f': '05',
 
 
 def exp_mod_n(a, exp, N):
+    '''Function to find a^exp mod (N).
     '''
-        function to find a^exp mod (N)
-        '''
     e = bin(exp)[2:]
     x_1 = 1
     x_2 = a
