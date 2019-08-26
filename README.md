@@ -2,7 +2,7 @@
 Python code to perform RSA (Rivest–Shamir–Adleman) public-key cryptosystem.
 
 # Flask App
-There is Flask app that performs the RSA encryption and decryption. To run the code locally use the folling command
+There is Flask app that performs the RSA encryption and decryption. To run the code locally use the following command
 
 ```python
 python main.py
@@ -32,7 +32,7 @@ If this endpoint is down and you would like to use it please email Carlo Morales
 # Tests
 To run the pytest test suite run the following code while in the main project directory.
 
-```python
+```json
 pytest --cov-report term-missing --cov=RSA
 ```
 
@@ -45,7 +45,7 @@ This endpoint accepts post requests. You must send a json object with the follow
 - length_q: length of second prime
 - length_q: length of encryption exponenet
 
-We recommend using primes larger then 100 digits.
+We recommend using primes larger than 100 digits.
 
 #### Example
 If we sent this JSON object
@@ -79,7 +79,7 @@ This JSON contains the following
 
 This endpoint accepts post requests. You must send a json object with the following fields.
 
-- messege: messege to ecrypt
+- messege: messege to encrypt
 - N: public modulus
 - e: encryption exponenet
 
