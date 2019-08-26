@@ -27,8 +27,6 @@ Flask app is also running on a Kubernetes cluster within the google cloud platfo
 ```json
 35.184.69.7:8080
 ```
-If this endpoint is down and you would like to use it please email Carlo Morales at *cjmorale2004@gmail.com*
-
 # Tests
 To run the pytest test suite run the following code while in the main project directory.
 
