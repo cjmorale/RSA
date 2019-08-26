@@ -6,3 +6,4 @@
 .cache/
 .coverage
 __pycache__/
+docs
