@@ -1,0 +1,230 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Welcome to RSA’s documentation! &#8212; RSA 0.0.2 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-RSA.encryption">
+<span id="welcome-to-rsa-s-documentation"></span><h1>Welcome to RSA’s documentation!<a class="headerlink" href="#module-RSA.encryption" title="Permalink to this headline">¶</a></h1>
+<p>RSA crypto system.</p>
+<dl class="function">
+<dt id="RSA.encryption.add_padding">
+<code class="descclassname">RSA.encryption.</code><code class="descname">add_padding</code><span class="sig-paren">(</span><em>string: str</em>, <em>pad_int: int = 311</em><span class="sig-paren">)</span> &#x2192; list<a class="headerlink" href="#RSA.encryption.add_padding" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add padding to rsa encryption. Take string blocks and encrypt each on individually.</p>
+<dl class="simple">
+<dt>Arguments:</dt><dd><p>string: (str) string of text being padded
+pad_int: (int) exponent to use in padding scheme</p>
+</dd>
+<dt>Returns:</dt><dd><p>(list) if encoded integers</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="RSA.encryption.egcd">
+<code class="descclassname">RSA.encryption.</code><code class="descname">egcd</code><span class="sig-paren">(</span><em>a: int</em>, <em>b: int</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#RSA.encryption.egcd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extended Euclidean Algorithm used to find the gcd of (a, b)</p>
+<dl class="simple">
+<dt>Arguments:</dt><dd><p>a: (int) first integer to use in Extended Euclidean Algorithm
+b: (int) second integer to use in Extended Euclidean Algorithm</p>
+</dd>
+<dt>Returns:</dt><dd><p>(int) the greatest common denominator of integers a and b</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="RSA.encryption.exp_mod_n">
+<code class="descclassname">RSA.encryption.</code><code class="descname">exp_mod_n</code><span class="sig-paren">(</span><em>a: int</em>, <em>exp: int</em>, <em>N: int</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#RSA.encryption.exp_mod_n" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to find a^exp mod (N).</p>
+<dl class="simple">
+<dt>Arguments:</dt><dd><p>a: (int) base
+exp: (int) exponent
+N: (int) modulus</p>
+</dd>
+<dt>Returns</dt><dd><p>(int) solution to a^exp mod (N)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="RSA.encryption.modinv">
+<code class="descclassname">RSA.encryption.</code><code class="descname">modinv</code><span class="sig-paren">(</span><em>a: int</em>, <em>m: int</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#RSA.encryption.modinv" title="Permalink to this definition">¶</a></dt>
+<dd><p>A modular inverse of an integer a (modulo m) is the integer  a^(-1) such that
+aa^(-1) = 1 (mod m).</p>
+<p>Args:
+a: int which we wish to find modular inverse of
+m: int modulus</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>int modular inverse of an integer a (modulo m)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="RSA.encryption.primality_test">
+<code class="descclassname">RSA.encryption.</code><code class="descname">primality_test</code><span class="sig-paren">(</span><em>p: int</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#RSA.encryption.primality_test" title="Permalink to this definition">¶</a></dt>
+<dd><p>If a is not divisible by p, Fermat’s little theorem is equivalent to the
+statement that a^p-1-1 is an integer multiple of p, or in symbols a^(p-1)
+equiv 1 mod p.</p>
+<dl class="simple">
+<dt>Arguments:</dt><dd><p>p: (int) which is tested to be a prime number</p>
+</dd>
+<dt>Returns:</dt><dd><p>(bool) that indicates if the the number p is prime or not</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="RSA.encryption.produce_prime">
+<code class="descclassname">RSA.encryption.</code><code class="descname">produce_prime</code><span class="sig-paren">(</span><em>length: int = 500</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#RSA.encryption.produce_prime" title="Permalink to this definition">¶</a></dt>
+<dd><p>length - prime number will have at least ‘length’ digits.
+If a is not divisible by p, Fermat’s little theorem is equivalent to
+the statement that a^p-1-1 is an integer multiple of p, or in symbols
+a^(p-1) equiv 1 mod p.</p>
+<dl class="simple">
+<dt>Arguments:</dt><dd><p>length: (int) minimum length of the prime we wish to find</p>
+</dd>
+<dt>Returns:</dt><dd><p>(int) a very large prime number based on Fermat’s little theorem</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="RSA.encryption.remove_padding">
+<code class="descclassname">RSA.encryption.</code><code class="descname">remove_padding</code><span class="sig-paren">(</span><em>block: int</em>, <em>pad_int: int = 311</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#RSA.encryption.remove_padding" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add padding to rsa encryption. Take string blocks and encrypt each on individually.</p>
+<dl class="simple">
+<dt>Arguments:</dt><dd><p>block: (int) which is the decoded message that is still padded</p>
+</dd>
+<dt>Returns:</dt><dd><p>(str) which has the padding scheme reversed and also replaced integers with text</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="RSA.encryption.replace_all">
+<code class="descclassname">RSA.encryption.</code><code class="descname">replace_all</code><span class="sig-paren">(</span><em>text: str</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#RSA.encryption.replace_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Replace text in a string using a predefined dictionary.</p>
+<dl class="simple">
+<dt>Arguments:</dt><dd><p>text: (str) a sting which we perform text replacement</p>
+</dd>
+<dt>Returns:</dt><dd><p>(str) a string with possible text replacements</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="RSA.encryption.replace_all_2">
+<code class="descclassname">RSA.encryption.</code><code class="descname">replace_all_2</code><span class="sig-paren">(</span><em>text: str</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#RSA.encryption.replace_all_2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Replace text in a string using a predefined dictionary.</p>
+<dl class="simple">
+<dt>Arguments:</dt><dd><p>text: (str) a sting which we perform text replacement</p>
+</dd>
+<dt>Returns:</dt><dd><p>(str) a string with possible text replacements</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">RSA</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Carlo Morales.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.0.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

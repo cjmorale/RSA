@@ -7,4 +7,5 @@ __pycache__
 .cache/
 .coverage
 __pycache__/
-
+docs_build
+docs
