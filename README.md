@@ -45,7 +45,7 @@ This endpoint accepts post requests. You must send a json object with the follow
 - length_q: length of second prime
 - length_q: length of encryption exponenet
 
-We recommend using primes larger then 100 digits.
+We recommend using primes larger than 100 digits.
 
 #### Example
 If we sent this JSON object
@@ -79,7 +79,7 @@ This JSON contains the following
 
 This endpoint accepts post requests. You must send a json object with the following fields.
 
-- messege: messege to ecrypt
+- messege: messege to encrypt
 - N: public modulus
 - e: encryption exponenet
 
