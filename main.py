@@ -6,9 +6,9 @@ import os
 
 app = Flask(__name__)
 
-@app.route("/")
-def hello():
-    return "Hello World!"
+@app.route("/", methods = ['GET'])
+def health_check():
+    return json.dumps(True)
 
 @app.route("/create_key", methods = ['POST'])
 def create_key():

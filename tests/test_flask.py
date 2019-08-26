@@ -10,6 +10,15 @@ def test_primality_test():
     assert primality_test(12) is False
 
 
+def test_health_check():
+    client = app.test_client()
+    API_ENDPOINT = '/'
+    rsp = client.get(API_ENDPOINT)
+    json_payload = json.loads(rsp.get_data(as_text=True))
+    assert rsp.status == '200 OK'
+    assert json_payload == True
+
+
 def test_create_key():
     client = app.test_client()
     API_ENDPOINT = '/create_key'
