@@ -52,22 +52,6 @@ mapping = {'a': '99', 'b': '01', 'c': '02', 'd': '03', 'e': '04', 'f': '05',
            '-': '66', ' ': '00'}
 
 
-def factor_brute_force(N):
-    '''
-        This function checks if any number fom numbers from 2 to sqrt(N) is
-        a factor of N.We can restrict this to odd numbers to speed up the process.
-        '''
-    for i in range(2, int(round(N**.5)+1)):
-        div = N / float(i)
-        if round(div) * i == N:
-            print(str(i) + " is a factor of " + str(N))
-            return(str(N) + " is not a prime number.")
-            break
-        else:
-            if i == round(N**.5):
-                return(str(N)+" is a prime number")
-
-
 def exp_mod_n(a, exp, N):
     '''
         function to find a^exp mod (N)
@@ -96,8 +80,10 @@ def primality_test(p):
     mod = exp_mod_n(2, p-1, p) == 1
     if mod is True:
         print(str(p) + " is probably prime ")
+        return True
     if mod is False:
         print(str(p) + " is not prime! ")
+        return False
 
 
 def produce_prime(length=500):

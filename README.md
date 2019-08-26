@@ -29,6 +29,13 @@ Flask app is also running on a Kubernetes cluster within the google cloud platfo
 ```
 If this endpoint is down and you would like to use it please email Carlo Morales at *cjmorale2004@gmail.com*
 
+# Tests
+To run the pytest test suite run the following code while in the main project directory.
+
+```python
+pytest --cov-report term-missing --cov=RSA
+```
+
 # Endpoints
 ### /create_key
 
