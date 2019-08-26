@@ -85,7 +85,7 @@ Note that N and e are ment to be public so anyone can send an encrypted message
 
 #### Example
 
-If we sent the following json
+If we sent the following json. Note this example takes a long time to run. We recommend you use primes between 100 and 150 digits.
 
 ```json
 {
