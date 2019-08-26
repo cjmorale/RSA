@@ -21,8 +21,7 @@ def create_key():
     rsa = RSA(length_p, length_q, length_e)
 
     values = rsa.generate_key()
-    print(values)
-    return json.dumps(rsa.generate_key())
+    return json.dumps(values)
 
 
 @app.route("/encrypt", methods = ['POST'])

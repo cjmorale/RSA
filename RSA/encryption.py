@@ -79,7 +79,7 @@ def exp_mod_n(a: int, exp: int, N: int) -> int:
     return x_1
 
 
-def primality_test(p; int) -> bool:
+def primality_test(p: int) -> bool:
     ''' If a is not divisible by p, Fermat's little theorem is equivalent to the
     statement that a^p-1-1 is an integer multiple of p, or in symbols a^(p-1)
     equiv 1 mod p.
