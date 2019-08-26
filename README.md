@@ -69,8 +69,8 @@ we get back the following
 
 This JSON contains the following
 
-- N: public modulus
-- d: private deryption key (keep secret)
+- N: public modulus = **p*q**
+- d: private deryption key (keep secret) **d ≡ e^−1 ((p-1)(q-1))**
 - e: encryption exponenet
 - p: first prime
 - q: second prime
