@@ -37,7 +37,7 @@ This endpoint accepts post requests. You must send a json object with the follow
 
 - length_p: length of first prime
 - length_q: length of second prime
-- length_q: length of encryption exponenet
+- length_q: length of encryption exponent
 
  Note this example will only work if running code locally on a powerful machine. We recommend you use primes between 100 and 150 digits when using the deployed end points.
 
@@ -65,7 +65,7 @@ This JSON contains the following
 
 - N: public modulus = **p*q**
 - d: private deryption key (keep secret) **d ≡ e^−1 mod((p-1)(q-1))**
-- e: encryption exponenet
+- e: encryption exponent
 - p: first prime
 - q: second prime
 
@@ -75,7 +75,7 @@ This endpoint accepts post requests. You must send a json object with the follow
 
 - messege: messege to encrypt
 - N: public modulus
-- e: encryption exponenet
+- e: encryption exponent
 
 Note that N and e are ment to be public so anyone can send an encrypted message
 
@@ -126,7 +126,7 @@ This JSON contains the following
 - d: private deryption key (the key you keep secret)
 
 
-Below is an example of a proper JSON payload for this endpoint. The only way someone could decode the message is by having the decryption exponenet **d**. The only way to find **d** is to factor N which is computational infeasible if we pick large enough primes **p** and **q**
+Below is an example of a proper JSON payload for this endpoint. The only way someone could decode the message is by having the decryption exponent **d**. The only way to find **d** is to factor N which is computational infeasible if we pick large enough primes **p** and **q**
 
 ```json
 {
