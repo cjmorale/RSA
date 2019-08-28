@@ -22,11 +22,7 @@ Flask application is also currently running on google cloud run. This service ha
 ```json
 https://rsa-ebqmominqa-uc.a.run.app
 ```
-# Kubernetes Engine
-Flask app is also running on a Kubernetes cluster within the google cloud platform. The endpoints can be accessed here.
-```json
-35.184.69.7:8080
-```
+
 # Tests
 To run the pytest test suite run the following code while in the main project directory.
 
