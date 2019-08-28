@@ -64,7 +64,7 @@ we get back the following
 This JSON contains the following
 
 - N: public modulus = **p*q**
-- d: private deryption key (keep secret) **d ≡ e^−1 mod((p-1)(q-1))**
+- d: private decryption key (keep secret) **d ≡ e^−1 mod((p-1)(q-1))**
 - e: encryption exponent
 - p: first prime
 - q: second prime
@@ -123,7 +123,7 @@ This JSON contains the following
 
 - encrypted: list of encoded integers
 - N: public modulus
-- d: private deryption key (the key you keep secret)
+- d: private decryption key (the key you keep secret)
 
 
 Below is an example of a proper JSON payload for this endpoint. The only way someone could decode the message is by having the decryption exponent **d**. The only way to find **d** is to factor N which is computational infeasible if we pick large enough primes **p** and **q**
