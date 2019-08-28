@@ -77,7 +77,7 @@ This endpoint accepts post requests. You must send a json object with the follow
 - N: public modulus
 - e: encryption exponent
 
-Note that N and e are ment to be public so anyone can send an encrypted message
+Note that **N** and **e** are ment to be public so anyone can send an encrypted message
 
 #### Example
 
