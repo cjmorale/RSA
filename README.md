@@ -73,7 +73,7 @@ This JSON contains the following
 
 This endpoint accepts post requests. You must send a json object with the following fields.
 
-- messege: messege to encrypt
+- message: message to encrypt
 - N: public modulus
 - e: encryption exponent
 
