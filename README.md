@@ -8,7 +8,7 @@ There is Flask app that performs the RSA encryption and decryption. To run the c
 python main.py
 ```
 
-Alternatively build snd run the docker container
+Alternatively build and run the docker container
 
 ```
 docker build -t rsa:latest .
