@@ -8,6 +8,13 @@ There is Flask app that performs the RSA encryption and decryption. To run the c
 python main.py
 ```
 
+Alternatively build snd run the docker container
+
+```
+docker build -t rsa:latest .
+docker run -d -p 8080:8080 rsa
+```
+
 The code will be running at **0.0.0.0:8080**
 
 # Google Cloud Function
