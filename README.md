@@ -123,7 +123,9 @@ we get back a list of large integers which is the encrypted message
 ]
 
 ```
-Each element of the list is the encoded text using the built in padding scheme.
+Each element of the list is an encoded letter from the message. The text data is turned into integers and each one is encrypted using the following formula where **c** is one of the letters in the messsage that was converted to an integer. **d** would be an element of the list above.
+
+- python list (encrypted message) **d ≡ c^e mod(N)**
 
 ### /decrypt
 This JSON contains the following
